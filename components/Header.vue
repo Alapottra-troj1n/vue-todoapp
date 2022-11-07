@@ -5,7 +5,7 @@
 
         <div class="addTask">
             <input v-model="inputTask" placeholder="Write Task" />
-            <button>ADD TASK</button>
+            <button @click="" >ADD TASK</button>
         </div>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default {
 }
 
 h2 {
-    margin-top: 1rem;
+   padding-top: 2rem;
     text-align: center;
     font-size: 2rem;
 }
