@@ -1,12 +1,13 @@
 <template>
     <div>
-        <h2><span class="logo">JASPER</span> TODO</h2>
+        <h2><span class="logo">NUXT</span> TODO</h2>
 
 
         <div class="addTask">
             <input v-model="inputTask" placeholder="Write Task" />
             <button @click="handleAddTask" >ADD TASK</button>
         </div>
+        <p>{{error}}</p>
     </div>
 </template>
 
@@ -17,7 +18,8 @@ export default {
 
     data() {
         return {
-         inputTask: ''
+         inputTask: '',
+         error: ''
         }
     },
     props: [
@@ -25,14 +27,17 @@ export default {
     ],
     methods: {
         handleAddTask(){
-
+            if(this.inputTask === ''){
+                this.error= 'Error ! Invaild input field '
+                return;
+            }
            const newTask = {
             id : this.todos.length + 1,
             task : this.inputTask
            }
 
            this.$emit('newTaskData', newTask);
-
+           this.error= ''
            this.inputTask = ''
 
 
@@ -49,13 +54,18 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-    color: #f81e30;
+    color: #17bd59;
 }
 
 h2 {
    padding-top: 2rem;
     text-align: center;
     font-size: 2rem;
+}
+p{
+    text-align: center;
+    margin-top: 1rem;
+    color: red;
 }
 
 .addTask{

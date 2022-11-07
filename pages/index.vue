@@ -7,7 +7,7 @@
 
       <div v-for="todo of todos" :key="todo.id" class="task">
         <h2>{{ todo.task }}</h2>
-        <button>x</button>
+        <button @click="handleDelete(todo)" >x</button>
       </div>
 
     </div>
@@ -32,7 +32,13 @@ export default {
   methods: {
 
       addNewTask(newTask) {
-        console.log(newTask)
+        
+        this.todos = [...this.todos, newTask]
+
+      },
+      handleDelete(todo){
+        
+       this.todos = this.todos.filter(task => task.id !== todo.id )
 
       }
 
