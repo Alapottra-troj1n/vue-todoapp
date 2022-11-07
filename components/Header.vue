@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h2><span class="logo">Jasper</span> Todo App</h2>
+        <h2><span class="logo">JASPER</span> TODO</h2>
 
 
         <div class="addTask">
             <input v-model="inputTask" placeholder="Write Task" />
-            <button @click="" >ADD TASK</button>
+            <button @click="handleAddTask" >ADD TASK</button>
         </div>
     </div>
 </template>
@@ -20,6 +20,26 @@ export default {
          inputTask: ''
         }
     },
+    props: [
+        "todos"
+    ],
+    methods: {
+        handleAddTask(){
+
+           const newTask = {
+            id : this.todos.length + 1,
+            task : this.inputTask
+           }
+
+           this.$emit('newTaskData', newTask);
+
+           this.inputTask = ''
+
+
+
+
+        }
+    }
 
 
 }
@@ -29,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-    color: #F72585;
+    color: #f81e30;
 }
 
 h2 {
